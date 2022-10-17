@@ -47,16 +47,14 @@ class BinarySearchTree {
         return false;
       }
 
-      if (node.value === value) {
+      if (node.data === value) {
         return true;
       }
 
-      return value < node.value
-        ? searchWithin(node.left, value)
-        : searchWithin(node.right, value);
+      return value < node.data ? 
+        searchWithin(node.left, value) : 
+        searchWithin(node.right, value);
     }
-    // throw new NotImplementedError('Not implemented');
-    // remove line with error and write your code here
   }
 
   find(value) {
@@ -82,10 +80,10 @@ class BinarySearchTree {
         return null;
       }
 
-      if (value < node.value) {
+      if (value < node.data) {
         node.left = removeNode(node.left, value);
         return node;
-      } else if (node.value < value) {
+      } else if (node.data < value) {
         node.right = removeNode(node.right, value);
         return node;
       } else {
@@ -112,9 +110,9 @@ class BinarySearchTree {
         while (minFromRight.left) {
           minFromRight = minFromRight.left;
         }
-        node.value = minFromRight.value;
+        node.data = minFromRight.data;
 
-        node.right = removeNode(node.right, minFromRight.value);
+        node.right = removeNode(node.right, minFromRight.data);
 
         return node;
       }
@@ -133,14 +131,14 @@ class BinarySearchTree {
       node = node.left;
     }
 
-    return node.value;
+    return node.data;
     // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   }
 
   max() {
     if (!this.tree) {
-      return null;
+      return;
     }
 
     let node = this.tree;
@@ -148,7 +146,7 @@ class BinarySearchTree {
       node = node.right;
     }
 
-    return node.value;
+    return node.data;
     // throw new NotImplementedError('Not implemented');
     // remove line with error and write your code here
   }
